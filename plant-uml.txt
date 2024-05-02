@@ -1,0 +1,40 @@
+@startuml
+' Questo è un commento
+
+package GeometryLibrary <<folder>>{
+class Triangle    'per creare una classe
+{
++ Vertices : Matrix3d      ‘il + indica che è pubblico
++ Triangle(Vertices)        ‘costruttore
++ double computeArea()
+}
+
+class Polygons
+{
++ Vertices : MatrixXd
++ listPolygons : vector<vector<unsigned int>>
++ v<v<v<unsigned int>>> computeTriangulation()      ‘il () indica che è un metodo
++ vector <double> computeArea()
++ void gedimInterface(v<v<unsigned int>>&)    passo per referenza per avere output
+}
+}
+
+package Gedim <<Frame>>
+{
+}
+note “Gedim is an external library” as GedimN     ‘GedimN è l’alias della nota
+GedimN .. Gedim
+
+Gedim ..> Polygons::gedimInterface     ‘Gedims sarà usato in gedimInterface di Polygons
+
+‘dichiaro che un poligono è costituito da più triangoli e che un triangolo è un solo poligono
+Triangle “many” --o “1” Polygons : is made up ‘per avere linea tratteggiata uso ..o
+
+..Non Member Function..
+void importPolygons(path, polygons)
+
+..TEST POLYGONS..
+TESTCOMPUTEAREA
+TESTTRIANGULATION
+
+@enduml
