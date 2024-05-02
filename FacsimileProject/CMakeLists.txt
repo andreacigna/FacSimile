@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.9)
 
-project(FACSIMILE LANGUAGES CXX C VERSION 1.0.0)
+project(DFN LANGUAGES CXX C VERSION 1.0.0)
 #il primo input della linea precedente setta in automatico la variabile CMAKE_PROJECT_NAME al valore dato
 # ${CMAKE_CURRENT_SOURCE_DIR} mi fornisce una path alla con cui ho costruito il progetto
 
@@ -56,13 +56,15 @@ list (APPEND ${CMAKE_PROJECT_NAME}_TEST_includes ${src_test_includes})
 
 add_subdirectory(TestingParaview/Code/src)
 list (APPEND ${CMAKE_PROJECT_NAME}_TEST_sources ${src_paraview_sources})
-list (APPEND ${CMAKE_PROJECT_NAME}_TEST_headers ${src_paraview_test_headers})
-list (APPEND ${CMAKE_PROJECT_NAME}_TEST_includes ${src_paraview_test_includes})
+list (APPEND ${CMAKE_PROJECT_NAME}_TEST_headers ${src_paraview_headers})
+list (APPEND ${CMAKE_PROJECT_NAME}_TEST_includes ${src_paraview_includes})
 
 # Create executable
 ################################################################################
 #esegubile del main del prgetto
-add_executable(${CMAKE_PROJECT_NAME} main.cpp ${${CMAKE_PROJECT_NAME}_sources}  ${${CMAKE_PROJECT_NAME}_headers})
+add_executable(${CMAKE_PROJECT_NAME} main.cpp
+    ${${CMAKE_PROJECT_NAME}_sources}
+    ${${CMAKE_PROJECT_NAME}_headers})
 
 target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC ${${CMAKE_PROJECT_NAME}_LINKED_LIBRARIES} )
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC ${${CMAKE_PROJECT_NAME}_includes})
