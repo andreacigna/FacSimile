@@ -1,40 +1,36 @@
 @startuml
 ' Questo è un commento
 
-package GeometryLibrary <<folder>>{
-class Triangle    'per creare una classe
+package GeometryLibrary <<Folder>>
 {
-+ Vertices : Matrix3d      ‘il + indica che è pubblico
-+ Triangle(Vertices)        ‘costruttore
+class Triangle {
++ Vertices : Matrix3d
++ Triangle(Vertices)
 + double computeArea()
 }
 
-class Polygons
-{
+class Polygons {
 + Vertices : MatrixXd
 + listPolygons : vector<vector<unsigned int>>
-+ v<v<v<unsigned int>>> computeTriangulation()      ‘il () indica che è un metodo
++ v<v<v<unsigned int>>> computeTriangulation()
 + vector <double> computeArea()
-+ void gedimInterface(v<v<unsigned int>>&)    passo per referenza per avere output
-}
-}
-
-package Gedim <<Frame>>
-{
-}
-note “Gedim is an external library” as GedimN     ‘GedimN è l’alias della nota
-GedimN .. Gedim
-
-Gedim ..> Polygons::gedimInterface     ‘Gedims sarà usato in gedimInterface di Polygons
-
-‘dichiaro che un poligono è costituito da più triangoli e che un triangolo è un solo poligono
-Triangle “many” --o “1” Polygons : is made up ‘per avere linea tratteggiata uso ..o
-
++ void gedimInterface(v<v<unsigned int>>&)
 ..Non Member Function..
 void importPolygons(path, polygons)
-
 ..TEST POLYGONS..
 TESTCOMPUTEAREA
 TESTTRIANGULATION
+}
+}
+
+package Gedim <<Frame>> {
+class Gedim 
+{        
+}
+}
+note "Gedim is an external library" as GedimN
+Gedim ..> Polygons::gedimInterface
+Triangle "many" --o "1" Polygons : is made up
+
 
 @enduml
