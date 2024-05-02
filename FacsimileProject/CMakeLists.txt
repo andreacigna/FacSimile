@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.9)
 
-project(DFN LANGUAGES CXX C VERSION 1.0.0)
+project(FACSIMILE LANGUAGES CXX C VERSION 1.0.0)
 #il primo input della linea precedente setta in automatico la variabile CMAKE_PROJECT_NAME al valore dato
 # ${CMAKE_CURRENT_SOURCE_DIR} mi fornisce una path alla con cui ho costruito il progetto
 
